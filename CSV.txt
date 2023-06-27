@@ -1,0 +1,26 @@
+!pip install -q google_play_scraper
+!pip install -q transformers
+!pip install -q plotly-express
+!pip install pyyaml==5.4.1
+
+import pandas as pd
+from google_play_scraper import app, Sort, reviews_all
+import plotly.express as px
+from transformers import pipeline
+
+project = reviews_all('com.jlr.landrover.incontrolremote.appstore', sleep_milliseconds=0, lang='en', country='IN', sort=Sort.NEWEST)
+
+df = pd.json_normalize(project)
+df['content'] = df['content'].astype('str')
+
+sentiment_analysis = pipeline("sentiment-analysis", model="siebert/sentiment-roberta-large-english")
+
+df['content'] = df['content'].apply(lambda x: x[:512])  # Truncate to the first 512 characters
+
+# Perform sentiment analysis
+df['result'] = df['content'].apply(lambda x: sentiment_analysis(x))
+df['sentiment'] = df['result'].apply(lambda x: x[0]['label'])
+df['score'] = df['result'].apply(lambda x: x[0]['score'])
+df = df[['content', 'sentiment', 'score']]
+
+df.to_csv("/content/drive/MyDrive/RemoteControl.csv", index=False)
