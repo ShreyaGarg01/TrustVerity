@@ -1,11 +1,11 @@
-,content,sentiment,score
-0,Not good,NEGATIVE,0.999464213848114
-1,Very bad,NEGATIVE,0.9994601607322693
-2,Nice app you try it now Kashmira,POSITIVE,0.9982036352157593
-3,Good,POSITIVE,0.9984152317047119
-4,Like,POSITIVE,0.9969191551208496
-5,Runa. Devi,POSITIVE,0.983018159866333
-6,In this app we cannot connect pc to Mobile using hotspot. There should have a hot spot option to connect to the pc. There should have a window base version of this app to use this app on pc. We must have to install emulator or other android base apps to use this app on pc.,NEGATIVE,0.9994090795516968
-7,Good app,POSITIVE,0.9987263083457947
-8,Wants acces to my contacts without explanation and won't work without,NEGATIVE,0.9994903802871704
-9,Worst,NEGATIVE,0.9991781115531921
+,content
+0,Not good
+1,Very bad
+2,Nice app you try it now Kashmira
+3,Good
+4,Like
+5,Runa. Devi
+6,In this app we cannot connect pc to Mobile using hotspot. There should have a hot spot option to connect to the pc. There should have a window base version of this app to use this app on pc. We must have to install emulator or other android base apps to use this app on pc.
+7,Good app
+8,Wants acces to my contacts without explanation and won't work without
+9,Worst
