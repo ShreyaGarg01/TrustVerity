@@ -2,7 +2,7 @@ import csv
 import glob
 
 # Get the path to the folder containing the CSV files
-folder_path = "dataset"
+folder_path = "abc"
 
 # Get a list of all the CSV files in the folder
 csv_files = glob.glob(folder_path + "/*.csv")
