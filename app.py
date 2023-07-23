@@ -13,10 +13,10 @@ app = Flask(__name__)
 def fraud_prediction():
 
     if request.method == 'POST':
-        idd = string(request.form['url'])
+        url_id = string(request.form['url'])
         # gotta extract exact id from url by python string formatting
-
-        ans=get_reviews(idd)
+        finid = url_id[url_id.index('=') + 1 : ]
+        ans=get_reviews(finid)
         return render_template('fraud_prediction.html', answer=fans)
 
 
