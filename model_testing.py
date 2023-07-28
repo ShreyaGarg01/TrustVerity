@@ -13,9 +13,9 @@ def count_reviews(reviews):
     analyzer = SentimentIntensityAnalyzer()
     for review in reviews:
         score = analyzer.polarity_scores(review)
-        if score["compound"] > 0.05:
+        if score["compound"] > 0.04:
             positive += 1
-        elif score["compound"] < -0.05:
+        elif score["compound"] < -0.04:
             negative += 1
         else:
             neutral += 1
@@ -27,16 +27,19 @@ def get_reviews(df):
     
     positive, negative, neutral = count_reviews(df['content'])
     ans = "Not Fraud"
-    if (negative / (positive + negative + neutral) >= 0.4):
+    if (negative / (positive + negative + neutral) >= 0.5):
+        print(negative, positive, neutral)
         ans = "Fraud"
     elif ((negative / (positive + negative) ) >= 0.4):
+        print(negative, positive, neutral)
+
         ans = "Fraud"
     # print(positive, negative, neutral, ans)
     return ans
 
 # %%
 
-folder_path = "dataset\Fraud"
+folder_path = "dataset\Safe"
 
 # Get a list of all the CSV files in the folder
 csv_files = glob.glob(folder_path + "/*.csv")
@@ -50,7 +53,8 @@ for csv_file in csv_files:
     x = get_reviews(df)
     if (x == "Fraud"):
         c+=1
-        # print(csv_file)
+    # else:
+    #     print(csv_file)
     t += 1
 
 print(c / t, c, t)

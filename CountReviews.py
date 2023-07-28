@@ -27,10 +27,12 @@ def get_reviews(id):
     df['content'] = df['content'].astype('str')
     positive, negative, neutral = count_reviews(df['content'])
     ans = "Not Fraud"
-    if (negative / (positive + negative + neutral) >= 0.4):
+    if (negative / (positive + negative + neutral) >= 0.5):
+        ans = "Fraud"
+    elif ((negative / (positive + negative) ) >= 0.4):
         ans = "Fraud"
     return ans
-
+    
 # %%
 
-print(get_reviews("com.gettimely.timely"))
+# print(get_reviews("com.gettimely.timely"))
