@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, Markup
+from flask import Flask, render_template
 import numpy as np
 import requests
-from CountReviews.py import get_reviews
+from CountReviews import get_reviews
 
 #  FLASK APP 
 app = Flask(__name__)
@@ -17,7 +17,7 @@ def fraud_prediction():
         # gotta extract exact id from url by python string formatting
         finid = url_id[url_id.index('=') + 1 : ]
         ans=get_reviews(finid)
-        return render_template('fraud_prediction.html', answer=fans)
+        return render_template('fraud_prediction.html', answer=ans)
 
 
 
