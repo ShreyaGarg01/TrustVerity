@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>TrustVerity</title>
+    <title>{{title}}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -55,7 +55,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto py-0">
-                        <a href="#home" class="nav-item nav-link active">Home</a>
+                        <a href="/home" class="nav-item nav-link active">Home</a>
                         <a href="/getresponse" class="nav-item nav-link">Check Fraud Apps</a>
                         <a href="#feature" class="nav-item nav-link">Feature</a>
                         <!-- <a href="#pricing" class="nav-item nav-link">Pricing</a> -->
@@ -65,27 +65,40 @@
                     <a href="" class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Start Free Trial</a>
                 </div>
             </nav>
+            <div class="container-xxl bg-primary hero-header">
+                <div class="container px-lg-5">
+                    <!-- <div class="row g-5"> -->
+                        <form id="predict" method="POST" action="/result">
+       
+                            <div class="form-group row">
+                                <h1>
+                              <label for="url" class="text-white mb-4 animated slideInDown">Enter the App Link</label></h1>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control form-control-lg" id="url" name="url" placeholder="Enter the play store link for the app">
+                              </div>
+                            </div>
+                
+                          <button type="submit" id="submit" class="btn btn-primary-gradient py-sm-3 px-4 px-sm-5 rounded-pill mt-3">Analyse</button>
+                        </form>                     
+                        
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="container py-0 px-lg-5"><h1 class="mb-4">{{answer}}</h1></div>
+
         </div>
         <!-- Navbar & Hero End -->
+
+        
+
 
 
         <!-- About Start -->
         <div class="container-xxl py-5" id="about">
             <div class="container py-5 px-lg-5">
                 <div class="row g-5 align-items-center">
-                    <form id="predict" method="POST" action="/result">
-       
-                        <div class="form-group row">
-                          <label for="url" class="col-sm-2 col-form-label col-form-label-lg">App Link</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control form-control-lg" id="url" name="url" placeholder="">
-                          </div>
-                        </div>
             
-                      <button type="submit" id="submit" class="btn btn-primary-gradient py-sm-3 px-4 px-sm-5 rounded-pill mt-3">Analyse</button>
-                    </form>
-
-                    {{answer}}
+                    
 
                 </div>
             </div>

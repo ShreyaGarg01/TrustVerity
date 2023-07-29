@@ -26,11 +26,11 @@ def get_reviews(id):
     df = pd.json_normalize(project)
     df['content'] = df['content'].astype('str')
     positive, negative, neutral = count_reviews(df['content'])
-    ans = "Not Fraud"
+    ans = "The app seems safe to use!"
     if (negative / (positive + negative + neutral) >= 0.5):
-        ans = "Fraud"
+        ans = "This app seems to be FRAUD! Be Cautious!"
     elif ((negative / (positive + negative) ) >= 0.4):
-        ans = "Fraud"
+        ans = "This app seems to be FRAUD! Be Cautious!"
     return ans
     
 # %%

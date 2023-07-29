@@ -19,6 +19,13 @@ def start():
     return render_template('index.html', title=title)
 
 
+@ app.route('/home')
+def home():
+    title = 'Home'
+    # active_page = 'home'
+    return render_template('index.html', title=title)
+
+
 @ app.route('/getresponse')
 def getresponse():
     title = 'Check the apps'
@@ -32,7 +39,15 @@ def result():
         url_id = str(request.form['url'])
         print(url_id)
         # gotta extract exact id from url by python string formatting
+        if (len(url_id) == 0 or url_id.find('=') == -1): 
+            return render_template('getresponse.html', answer="Enter a valid link!")
+             
+             
+
         finid = url_id[url_id.index('=') + 1 : ]
+        if (finid.find('&') != -1):
+            finid = finid[:finid.index('&')]
+        print(finid)
         ans=get_reviews(finid)
         return render_template('getresponse.html', answer=ans)
 
