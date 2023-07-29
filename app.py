@@ -1,7 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 import numpy as np
-import requests
+# import requests
+import warnings
+
 from CountReviews import get_reviews
+warnings.filterwarnings("ignore")
 
 #  FLASK APP 
 app = Flask(__name__)
@@ -9,15 +12,29 @@ app = Flask(__name__)
 
 # RENDER PREDICTION PAGE
 
-@ app.route('/fraud-predict', methods=['POST'])
-def fraud_prediction():
+@ app.route('/')
+def start():
+    title = 'Home'
+    # active_page = 'home'
+    return render_template('index.html', title=title)
 
-    if request.method == 'POST':
-        url_id = string(request.form['url'])
+
+@ app.route('/getresponse')
+def getresponse():
+    title = 'Check the apps'
+    # active_page = 'home'
+    return render_template('getresponse.html', title=title)
+
+@ app.route('/result', methods=['GET', 'POST'])
+def result():
+
+    # if request.method == 'POST':
+        url_id = str(request.form['url'])
+        print(url_id)
         # gotta extract exact id from url by python string formatting
         finid = url_id[url_id.index('=') + 1 : ]
         ans=get_reviews(finid)
-        return render_template('fraud_prediction.html', answer=ans)
+        return render_template('getresponse.html', answer=ans)
 
 
 
